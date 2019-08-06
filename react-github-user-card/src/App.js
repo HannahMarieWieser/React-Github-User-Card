@@ -29,8 +29,6 @@ class App extends React.Component{
 
   }
 
-
-
   userInfo = () => {
     axios.get('https://api.github.com/users/HannahMarieWieser')
     .then(person => {
@@ -45,19 +43,21 @@ class App extends React.Component{
 
 
 
-
   render(){
     //console.log("state-users", this.state.users)
     console.log("state-followers", this.state.followers)
     return(
-      <div>
-        <h1>React Github UserCards</h1>
-        <UserCard key = {this.state.users} info = {this.state.users}/>
+      <div className='wholeapp' >
+        <h1 className='title' >React Github UserCards</h1>
 
-        {this.state.followers.map(follow => {
-          console.log("follow", follow)
-          return <FollowersCard key={follow} info = {follow}/>
-        })}
+        <div className='grid' >
+          <UserCard key = {this.state.users} info = {this.state.users}className='cards' />
+
+          {this.state.followers.map(follow => {
+            console.log("follow", follow)
+            return <FollowersCard key={follow} info = {follow} className='cards'/>
+          })}
+        </div>
 
       </div> 
 

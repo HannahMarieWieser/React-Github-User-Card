@@ -4,6 +4,8 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 
 function FollowersCard (props) {
+   
+
     console.log("props", props)
     return <Card>
         <Image src= {props.info.avatar_url} wrapped ui={false} />
