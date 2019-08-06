@@ -10,17 +10,21 @@ class App extends React.Component{
     this.state = {
       users: []
     }
+    
   }
 
   componentDidMount(){
     this.userInfo();
+    
   }
+
+
 
   userInfo = () => {
     axios.get('https://api.github.com/users/HannahMarieWieser')
     .then(person => {
         this.setState({ users : person.data})
-        console.log(person)
+        console.log("person", person.data)
     })
     .catch(err => {
         console.log(err)
@@ -28,15 +32,18 @@ class App extends React.Component{
 
   }
 
+
+
+
   render(){
+    console.log("state-users", this.state.users)
     return(
       <div>
         <h1>React Github UserCards</h1>
-        {/* {this.state.users.map(user => {
-          return <userCard info = {this.state.users}/>
-        })} */}
-        
 
+        {this.state.users.map(user => {
+          return <userCard key={user} info = {user}/>
+        })}
 
       </div> 
 
